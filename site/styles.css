@@ -1,0 +1,127 @@
+/* Agency landing page. Mobile-first. Logical properties so RTL (ar.html) just works. */
+:root {
+  --ink: #0f1638;
+  --blue: #2140c4;
+  --blue-deep: #16297f;
+  --sun: #f5c431;
+  --paper: #f3f5fb;
+  --white: #ffffff;
+  --muted: #465072;
+  --line: #d3d9ec;
+  --ph-bg: #fff2b0;
+  --ph-fg: #3b2f00;
+  --ph-line: #8a6a00;
+
+  --font-display: Cambria, "Iowan Old Style", Georgia, serif;
+  --font-body: "Segoe UI", system-ui, -apple-system, Tahoma, Arial, sans-serif;
+
+  --s1: 0.5rem; --s2: 1rem; --s3: 1.5rem; --s4: 2.5rem; --s5: 4rem;
+  --radius: 14px;
+  --max: 68rem;
+}
+:root[lang="ar"] { --font-display: "Segoe UI", Tahoma, "Noto Naskh Arabic", Arial, sans-serif; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.6; color: var(--ink); background: var(--paper); }
+img, svg { max-width: 100%; display: block; }
+a { color: var(--blue-deep); text-underline-offset: 3px; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; box-shadow: 0 0 0 6px var(--ink); border-radius: 4px; }
+.skip { position: absolute; inset-inline-start: var(--s2); top: -4rem; background: var(--sun); color: var(--ink); padding: .6rem 1rem; border-radius: 8px; z-index: 10; font-weight: 700; }
+.skip:focus { top: var(--s1); }
+.wrap { width: min(100% - 2rem, var(--max)); margin-inline: auto; }
+
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.12; margin: 0 0 var(--s2); text-wrap: balance; }
+h1 { font-size: clamp(2.2rem, 9vw, 4.4rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.7rem, 5.5vw, 2.6rem); font-weight: 800; }
+h3 { font-size: 1.3rem; font-weight: 700; }
+p { margin: 0 0 var(--s2); max-inline-size: 62ch; }
+.eyebrow { font-family: var(--font-body); font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+:root[lang="ar"] .eyebrow { letter-spacing: 0; text-transform: none; font-size: .95rem; }
+
+/* placeholders: impossible to miss */
+.ph { background: var(--ph-bg); color: var(--ph-fg); outline: 2px dashed var(--ph-line); outline-offset: 1px; padding: 0 .3em; border-radius: 3px; font-weight: 700; direction: ltr; unicode-bidi: isolate; display: inline-block; }
+.draft-banner { background: var(--ph-bg); color: var(--ph-fg); border-block-end: 2px dashed var(--ph-line); padding: .6rem 0; font-size: .95rem; font-weight: 600; }
+
+/* header */
+.top { background: var(--ink); color: var(--white); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); padding-block: .9rem; }
+.brand { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; color: var(--white); text-decoration: none; }
+.lang { color: var(--ink); background: var(--sun); text-decoration: none; font-weight: 800; padding: .45rem .9rem; border-radius: 999px; min-block-size: 44px; display: inline-flex; align-items: center; }
+
+/* hero: the shopfront awning is the signature */
+.hero { background: var(--ink); color: var(--white); position: relative; padding-block-end: var(--s5); }
+.awning { block-size: 3.4rem; background:
+    radial-gradient(circle at 50% 100%, var(--ink) 0 1.1rem, transparent 1.15rem) 0 100% / 2.2rem 1.1rem repeat-x,
+    repeating-linear-gradient(90deg, var(--sun) 0 1.1rem, var(--white) 1.1rem 2.2rem);
+  border-block-end: 0; }
+.hero .wrap { padding-block-start: var(--s4); display: grid; gap: var(--s3); }
+.hero .eyebrow { color: var(--sun); }
+.hero p.lead { font-size: 1.2rem; color: #e3e8fb; }
+.hero h1 em { font-style: normal; color: var(--sun); }
+.cta-row { display: flex; flex-wrap: wrap; gap: var(--s2); margin-block-start: var(--s2); }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-block-size: 48px; padding: .7rem 1.4rem; border-radius: 999px; font-weight: 800; text-decoration: none; border: 2px solid transparent; font-size: 1rem; transition: transform .15s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-sun { background: var(--sun); color: var(--ink); }
+.btn-line { border-color: var(--white); color: var(--white); }
+.btn-blue { background: var(--blue); color: var(--white); }
+.hero-note { font-size: .95rem; color: #c6cef0; }
+
+section { padding-block: var(--s5); }
+.sec-title { margin-block-end: var(--s4); }
+.sec-title .eyebrow { color: var(--blue-deep); display: block; margin-block-end: var(--s1); }
+
+/* what I do: a plain list of problems with the fix */
+.pairs { display: grid; gap: var(--s2); padding: 0; margin: 0; list-style: none; }
+.pairs li { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: var(--s3); }
+.pairs strong { display: block; font-family: var(--font-display); font-size: 1.15rem; margin-block-end: .25rem; }
+
+/* pricing */
+.tiers { display: grid; gap: var(--s3); }
+.tier { background: var(--white); border: 2px solid var(--ink); border-radius: var(--radius); padding: var(--s3); display: flex; flex-direction: column; gap: var(--s1); }
+.tier.feat { background: var(--blue); color: var(--white); border-color: var(--blue); }
+.tier.feat .price small, .tier.feat li { color: #e6ebff; }
+.price { font-family: var(--font-display); font-size: 2rem; font-weight: 800; margin: 0; }
+.price small { font-family: var(--font-body); font-size: .9rem; font-weight: 400; color: var(--muted); }
+.tier ul { margin: 0; padding-inline-start: 1.2rem; }
+.tier li { margin-block-end: .3rem; }
+.fineprint { font-size: .92rem; color: var(--muted); margin-block-start: var(--s3); }
+
+/* process: a real sequence, so numbers are honest here */
+.steps { counter-reset: s; list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s2); }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 3rem 1fr; gap: var(--s2); align-items: start; padding-block: var(--s2); border-block-start: 1px solid var(--line); }
+.steps li::before { content: counter(s); font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; inline-size: 2.6rem; block-size: 2.6rem; border-radius: 50%; background: var(--sun); color: var(--ink); display: grid; place-items: center; }
+:root[lang="ar"] .steps li::before { content: counter(s, arabic-indic); }
+.steps b { display: block; }
+
+.band { background: var(--white); border-block: 1px solid var(--line); }
+.no-list { display: grid; gap: var(--s1); padding: 0; margin: 0; list-style: none; }
+.no-list li { padding-inline-start: 1.6rem; position: relative; }
+.no-list li::before { content: ""; position: absolute; inset-inline-start: 0; top: .6em; inline-size: .8rem; block-size: .8rem; background: var(--blue); border-radius: 2px; transform: rotate(45deg); }
+
+/* demos */
+.demo-grid { display: grid; gap: var(--s2); grid-template-columns: 1fr 1fr; }
+.demo { display: block; padding: var(--s2); border: 2px solid var(--ink); border-radius: var(--radius); background: var(--white); text-decoration: none; color: var(--ink); font-weight: 800; }
+.demo span { display: block; font-weight: 400; font-size: .9rem; color: var(--muted); }
+.demo:hover { background: var(--sun); }
+
+/* contact */
+.contact { background: var(--blue-deep); color: var(--white); }
+.contact a { color: var(--white); }
+.contact .eyebrow { color: var(--sun); }
+.contact dl { display: grid; gap: var(--s2); margin: var(--s3) 0; }
+.contact dt { font-weight: 700; color: #cbd4f7; font-size: .9rem; }
+.contact dd { margin: 0; font-size: 1.15rem; }
+
+footer { background: var(--ink); color: #c6cef0; padding-block: var(--s3); font-size: .92rem; }
+footer a { color: var(--white); }
+
+@media (min-width: 720px) {
+  .hero .wrap { grid-template-columns: 1.4fr 1fr; align-items: end; }
+  .pairs, .tiers { grid-template-columns: repeat(3, 1fr); }
+  .steps { grid-template-columns: repeat(4, 1fr); }
+  .steps li { grid-template-columns: 1fr; border-block-start: 3px solid var(--ink); }
+  .demo-grid { grid-template-columns: repeat(4, 1fr); }
+  .hero-side { border-inline-start: 4px solid var(--sun); padding-inline-start: var(--s3); }
+}
